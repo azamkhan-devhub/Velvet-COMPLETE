@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --font-display:'Cormorant Garamond',Georgia,serif; --font-body:'DM Sans',system-ui,sans-serif; }
+
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:#f5f0e8; }
+::-webkit-scrollbar-thumb { background:#c9a96e; border-radius:2px; }
+::selection { background:#c9a96e22; }
+html { scroll-behavior:smooth; }
+
+@layer base {
+  body { @apply bg-white text-black font-body; }
+  h1,h2,h3,h4,h5,h6 { @apply font-display; }
+}
+
+@layer components {
+  .btn-primary   { @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-black text-white text-xs tracking-[0.18em] uppercase font-body font-medium transition-all duration-300 hover:bg-gold hover:text-black disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold; }
+  .btn-outline   { @apply inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-black text-black text-xs tracking-[0.18em] uppercase font-body font-medium transition-all duration-300 hover:bg-black hover:text-white focus-visible:outline-none; }
+  .btn-ghost     { @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-black text-xs tracking-[0.15em] uppercase font-body font-medium transition-all duration-300 hover:text-gold focus-visible:outline-none; }
+  .btn-danger    { @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-red-600 text-white text-xs tracking-wider uppercase font-body font-medium transition-colors hover:bg-red-700 focus-visible:outline-none; }
+  .input-field   { @apply w-full border border-border bg-transparent px-4 py-3 text-sm font-body placeholder:text-muted/50 focus:outline-none focus:border-black transition-colors duration-200; }
+  .admin-input   { @apply w-full border border-admin-border bg-admin-surface px-4 py-2.5 text-sm text-admin-text placeholder:text-admin-muted focus:outline-none focus:border-gold/50 transition-colors rounded-lg; }
+  .section-eyebrow { @apply block text-[10px] tracking-[0.3em] uppercase text-muted font-body font-medium mb-3; }
+  .section-title { @apply font-display text-4xl md:text-5xl font-light leading-tight; }
+  .badge         { @apply inline-block px-2.5 py-0.5 text-[10px] tracking-[0.15em] uppercase font-medium; }
+  .badge-new     { @apply badge bg-black text-white; }
+  .badge-sale    { @apply badge bg-gold text-black; }
+  .divider       { @apply w-12 h-px bg-gold my-6; }
+  .img-zoom      { @apply overflow-hidden; }
+  .img-zoom img  { @apply transition-transform duration-700; }
+  .img-zoom:hover img { @apply scale-105; }
+  .skeleton      { background:linear-gradient(90deg,#f5f0e8 25%,#e8ddd0 50%,#f5f0e8 75%); background-size:200% 100%; animation:shimmer 1.6s infinite; }
+  .admin-card    { @apply bg-admin-surface border border-admin-border rounded-xl p-5; }
+  .admin-table-row { @apply border-b border-admin-border hover:bg-white/5 transition-colors; }
+}
+
+@layer utilities {
+  .font-display { font-family:var(--font-display); }
+  .font-body    { font-family:var(--font-body); }
+}
+
+/* Marquee */
+.marquee-track { display:flex; width:max-content; animation:marquee 32s linear infinite; }
+.marquee-track:hover { animation-play-state:paused; }
+
+/* Admin scrollbar */
+.admin-scroll::-webkit-scrollbar { width:3px; }
+.admin-scroll::-webkit-scrollbar-track { background:#1a1d27; }
+.admin-scroll::-webkit-scrollbar-thumb { background:#c9a96e44; border-radius:2px; }
+
+/* Page enter */
+.page-enter { animation:fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) forwards; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes shimmer { from{background-position:-200% 0} to{background-position:200% 0} }
